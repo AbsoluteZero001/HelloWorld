@@ -7,7 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="EPS" />
     <orderEntry type="module" module-name="ATM" />
+    <orderEntry type="module" module-name="EPS2" />
+    <orderEntry type="module" module-name="EPS" />
+    <orderEntry type="module" module-name="ATM2" />
   </component>
 </module>
