@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Java项目/ATM/ATM.iml" filepath="$PROJECT_DIR$/Java项目/ATM/ATM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java项目/ATM/ATM/ATM2.iml" filepath="$PROJECT_DIR$/Java项目/ATM/ATM/ATM2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java项目/EPS/EPS.iml" filepath="$PROJECT_DIR$/Java项目/EPS/EPS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java项目/EPS/EPS/EPS2.iml" filepath="$PROJECT_DIR$/Java项目/EPS/EPS/EPS2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java项目/HRMS/HRMS.iml" filepath="$PROJECT_DIR$/Java项目/HRMS/HRMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/HelloWorld.iml" filepath="$PROJECT_DIR$/.idea/HelloWorld.iml" />
+    </modules>
+  </component>
+</project>
