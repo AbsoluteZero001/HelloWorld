@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.springboot.mapper.UserMapper">
+
+    <!-- 原来的方法 -->
+    <select id="testMybatis" resultType="int">
+        SELECT COUNT(1)
+        FROM user
+    </select>
+
+    <!-- 新增：动态 SQL 查询 building 表 -->
+    <select id="findAllBuilding" resultType="com.springboot.springboot.pojo.Building">
+        SELECT *
+        FROM building
+        <where>
+            <if test="number != null and number != ''">
+                building_code LIKE CONCAT('%', #{number}, '%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

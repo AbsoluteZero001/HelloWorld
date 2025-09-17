@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: TANGJ
+Build-Jdk: Oracle OpenJDK 17.0.6
+Implementation-Title: SpringBoot
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.springboot
+Main-Class: ${start-class}
+
