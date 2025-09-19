@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="../assets/js/axios.js"></script>
+  </head>
+  <body>
+    <form>
+      <label for="mobile">
+        手机号：
+        <input type="text" name="mobile" id="mobile" />
+      </label>
+      <br />
+      <label for="name">
+        用户名：
+        <input type="text" name="name" id="name" />
+      </label>
+      <br />
+      <label for="nickName">
+        昵称：
+        <input type="text" name="nickName" id="nickName" />
+      </label>
+      <br />
+      <label for="pwd">
+        密码：
+        <input type="text" name="pwd" id="pwd" />
+      </label>
+      <br />
+      <input type="submit" value="提交" />
+      <input type="submit" id="set" value="修改" />
+    </form>
+    <script>
+      const btn = document.querySelector("input[type=submit]");
+      const btn1 = document.querySelector("#set");
+      console.log(btn);
+      btn.onclick = async (e) => {
+        const mobile = document.querySelector("#mobile").value;
+        const name = document.querySelector("#name").value;
+        const nickname = document.querySelector("#nickName").value;
+        const pwd = document.querySelector("#pwd").value;
+        let data = {
+          mobile,
+          name,
+          nickname,
+          pwd,
+        };
+        e.preventDefault();
+        let url = "http://localhost:8080";
+        const form = document.querySelector("form");
+        // console.log([form]);
+        const res = await axios({
+          method: "post",
+          url: `${url}/add/admin`,
+          data,
+        });
+        console.log(res);
+      };
+      btn1.onclick = async (e) => {
+        const mobile = document.querySelector("#mobile").value;
+        const name = document.querySelector("#name").value;
+        const nickname = document.querySelector("#nickName").value;
+        const pwd = document.querySelector("#pwd").value;
+        let data = {
+          mobile,
+          name,
+          nickname,
+          pwd,
+          id: 8,
+        };
+        e.preventDefault();
+        let url = "http://localhost:8080";
+        const res = await axios({
+          method: "PUT",
+          url: `${url}/set/admin`,
+          data,
+        });
+        console.log(res);
+      };
+      // let params = {
+      //   name: "张三",
+      //   age: 23,
+      //   addr: ["北京", "上海", "四川"],
+      // };
+      // axios({
+      //   url: `${url}/admin`,
+      //   method: "post",
+      //   data: params,
+      // }).then((res) => {
+      //   console.log(res);
+      // });
+    </script>
+  </body>
+</html>
