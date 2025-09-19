@@ -6,7 +6,8 @@
 <mapper namespace="com.springboot.springboot.mapper.BuildingMapper">
 
     <!-- 查询楼栋，可根据楼栋编号模糊匹配，如果 number 为空或 null 则查询全部 -->
-    <select id="findAllBuilding" resultType="com.springboot.springboot.pojo.Building" parameterType="java.lang.String">
+    <select id="findAllBuilding" resultType="com.springboot.springboot.pojo.Building"
+            parameterType="java.lang.String">
         SELECT *
         FROM building
         <where>
@@ -14,6 +15,22 @@
                 building_code LIKE CONCAT('%', #{number}, '%')
             </if>
         </where>
+    </select>
+
+    <!-- 根据 ID 查询整个楼栋信息 -->
+    <select id="queryById" parameterType="java.lang.Integer"
+            resultType="com.springboot.springboot.pojo.Building">
+        SELECT *
+        FROM building
+        WHERE building_id = #{id}
+    </select>
+
+    <!-- 根据 ID 查询楼栋名称 -->
+    <select id="queryNameById" parameterType="java.lang.Integer"
+            resultType="java.lang.String">
+        SELECT building_name
+        FROM building
+        WHERE building_id = #{id}
     </select>
 
 </mapper>

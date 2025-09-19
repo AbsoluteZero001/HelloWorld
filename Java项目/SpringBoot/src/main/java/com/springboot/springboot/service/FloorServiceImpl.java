@@ -29,7 +29,7 @@ public class FloorServiceImpl implements FloorService {
 
         // 设置楼栋名称
         floors.forEach(floor -> {
-            String buildingName = buildingMapper.queryById(floor.getBelongBuilding());
+            String buildingName = String.valueOf(buildingMapper.queryById(floor.getBelongBuilding()));
             floor.setBuilding_name(buildingName);
         });
 
