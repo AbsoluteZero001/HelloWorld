@@ -2,6 +2,7 @@ package com.springboot.springboot.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.springboot.springboot.mapper.BuildingMapper;
 import com.springboot.springboot.pojo.Building;
 import com.springboot.springboot.pojo.PageResult;

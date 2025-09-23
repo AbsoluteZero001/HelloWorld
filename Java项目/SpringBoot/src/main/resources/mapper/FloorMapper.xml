@@ -5,11 +5,17 @@
 <mapper namespace="com.springboot.springboot.mapper.FloorMapper">
 
     <select id="findAllFloor" resultType="com.springboot.springboot.pojo.Floor">
-        SELECT *
-        FROM floor
+        SELECT
+        f.floor_id        AS floorId,
+        f.belong_building AS belongBuilding,
+        f.floor_number    AS floorNumber,
+        f.room_number     AS roomNumber,
+        b.building_name   AS buildingName
+        FROM floor f
+        LEFT JOIN building b ON f.belong_building = b.building_id
         <where>
             <if test="number != null and number != ''">
-                floor_number LIKE CONCAT('%', #{number}, '%')
+                f.floor_number LIKE CONCAT('%', #{number}, '%')
             </if>
         </where>
     </select>

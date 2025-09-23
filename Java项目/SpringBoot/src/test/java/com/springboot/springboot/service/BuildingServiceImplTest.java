@@ -1,12 +1,18 @@
-package com.springboot.springboot.service;
+package  com.springboot.springboot.service;
 
 import com.springboot.springboot.pojo.PageResult;
 import com.springboot.springboot.pojo.Building;
+import com.springboot.springboot.service.BuildingService;
+import com.springboot.springboot.service.BuildingServiceImpl;
+import jakarta.annotation.security.RunAs;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
+@RunAs("SpringRunner")
 class BuildingServiceImplTest {
 
     @Autowired
@@ -18,7 +24,7 @@ class BuildingServiceImplTest {
         // 测试全部楼栋分页
         // ===============================
         PageResult<Building> allPage1 = buildingService.pageOfBuilding(1, 10, null);
-        System.out.println("全部楼栋 - 第1页（每页10条）: " + allPage1);
+        System.out.println("全部楼栋 - 第1页（每页10条）: " + allPage1.getList());
 
         PageResult<Building> allPage2 = buildingService.pageOfBuilding(2, 5, null);
         System.out.println("全部楼栋 - 第2页（每页5条）: " + allPage2);

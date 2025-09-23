@@ -13,7 +13,8 @@ import java.time.LocalDate;
 public class Building {
 
     @Schema(description = "楼栋ID")
-    private Integer buildingId;
+    private Integer buildingId; //驼峰命名法 符合 JavaBean 规范
+    //@Column(name = "building_id")  //如果不做配置，MyBatis 默认不会自动识别，需要手动写@Column(name = "building_id")
 
     @Schema(description = "楼栋编号")
     private String buildingCode;

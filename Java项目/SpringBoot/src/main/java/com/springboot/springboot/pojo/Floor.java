@@ -8,5 +8,5 @@ public class Floor {
     private Integer belongBuilding;  // 对应 building_id
     private Integer floorNumber;
     private Integer roomNumber;
-    private String building_name;    // 用于显示楼栋名称
+    private String buildingName;    // 用于显示楼栋名称
 }

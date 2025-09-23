@@ -25,18 +25,16 @@ public class FloorServiceImpl implements FloorService {
         PageHelper.startPage(current, size);
 
         // 返回 List，PageHelper 会自动拦截
-        List<Floor> floors = floorMapper.findAllFloor(number);
+        Page<Floor> floors = floorMapper.findAllFloor(number);
 
         // 设置楼栋名称
         floors.forEach(floor -> {
             String buildingName = String.valueOf(buildingMapper.queryById(floor.getBelongBuilding()));
-            floor.setBuilding_name(buildingName);
+            floor.setBuildingName(buildingName);
         });
 
-        // 将 List 转成 Page<Floor>
-        Page<Floor> page = (Page<Floor>) floors;
 
-        return PageResult.restPage(page);
+        return PageResult.restPage(floors);
     }
 
 }

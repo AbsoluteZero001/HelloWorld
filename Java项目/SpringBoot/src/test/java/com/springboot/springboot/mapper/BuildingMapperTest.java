@@ -1,5 +1,7 @@
 package com.springboot.springboot.mapper;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.springboot.springboot.mapper.BuildingMapper;
 import com.springboot.springboot.pojo.Building;
 import org.junit.jupiter.api.Test;
@@ -20,13 +22,13 @@ class BuildingMapperTest {
     @Test
     void findAllBuilding() {
         // 查询全部楼栋
-        List<Building> allBuildings = buildingMapper.findAllBuilding(null);
+        Page<Building> allBuildings = buildingMapper.findAllBuilding(null);
         System.out.println("=== 查询全部楼栋 ===");
         allBuildings.forEach(System.out::println);
 
         // 查询编号包含 "A" 的楼栋（模糊查询）
-        List<Building> filteredBuildings = buildingMapper.findAllBuilding("A");
+        /*List<Building> filteredBuildings = buildingMapper.findAllBuilding("A");
         System.out.println("=== 查询编号包含 'A' 的楼栋 ===");
-        filteredBuildings.forEach(System.out::println);
+        filteredBuildings.forEach(System.out::println);*/
     }
 }

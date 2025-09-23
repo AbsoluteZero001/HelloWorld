@@ -32,7 +32,7 @@ public class BuildingController {
                             description = "返回楼栋分页信息",
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                    schema = @Schema(implementation = PageResult.class)
+                                    schema = @Schema(implementation = ResponsePojo.class)
                             )
                     )
             }

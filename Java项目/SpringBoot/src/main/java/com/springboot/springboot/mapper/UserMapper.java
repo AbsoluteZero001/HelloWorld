@@ -1,21 +1,30 @@
 package com.springboot.springboot.mapper;
 
-import com.github.pagehelper.Page;
-import com.springboot.springboot.entity.User;
-import com.springboot.springboot.pojo.Building;
-import org.apache.ibatis.annotations.Insert;
+import com.springboot.springboot.pojo.user.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 @Mapper
 public interface UserMapper {
 
-    @Insert("INSERT INTO user(username, password, account, idcard, gender) " +
-            "VALUES(#{username}, #{password}, #{account}, #{idcard}, #{gender})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
     int insertUser(User user);
 
-    // 分页查询楼栋，带条件
-    Page<Building> findAllBuilding(@Param("number") String number);
+    List<User> queryOnCondition(User user);
+
+    List<User> findUsersByType(@Param("condition") String condition,
+                               @Param("userType") Integer userType);
+
+    User selectById(@Param("id") int id);
+
+    // 原来的方法
+    @Update("UPDATE user SET user_avatar = #{userAvatar} WHERE userid = #{id}")
+    Integer updateAvatar(User user);
+
+    // 新增方法，直接传 avatar 路径和 id
+    @Update("UPDATE user SET user_avatar = #{avatar} WHERE userid = #{id}")
+    Integer updateAvatarById(@Param("avatar") String avatar, @Param("id") Integer id);
 }
+

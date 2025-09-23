@@ -1,6 +1,7 @@
 package com.springboot.springboot.mapper;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.springboot.springboot.pojo.Building;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
