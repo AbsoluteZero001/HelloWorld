@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Java项目/大一下/HRMS" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/网页项目/Webproject" vcs="Git" />
   </component>
 </project>

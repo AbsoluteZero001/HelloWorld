@@ -1,4 +1,4 @@
-package com.springboot.springboot;
+package com.springboot.springboot.pojo;
 
 import com.springboot.springboot.pojo.Floor;
 import org.junit.jupiter.api.Test;
