@@ -1,4 +1,4 @@
-package com.springboot.springboot.service.impl;
+package com.springboot.springboot.service;
 
 import com.springboot.springboot.pojo.PageResult;
 import com.springboot.springboot.pojo.user.User;
