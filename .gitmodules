@@ -1,0 +1,9 @@
+[submodule "Java-Project"]
+	path = Java-Project
+	url = https://github.com/AbsoluteZero001/Java-Project.git
+[submodule "Web-Project"]
+	path = Web-Project
+	url = https://github.com/AbsoluteZero001/Web-Project.git
+[submodule "C-Project"]
+	path = C-Project
+	url = https://github.com/AbsoluteZero001/C-Project.git
