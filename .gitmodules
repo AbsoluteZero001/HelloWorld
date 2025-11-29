@@ -1,9 +1,12 @@
 [submodule "Java-Project"]
 	path = Java-Project
-	url = https://github.com/AbsoluteZero001/Java-Project.git
+	url = git@github.com:AbsoluteZero001/Java-Project.git
+	branch = main
 [submodule "Web-Project"]
 	path = Web-Project
-	url = https://github.com/AbsoluteZero001/Web-Project.git
+	url = git@github.com:AbsoluteZero001/Web-Project.git
+	branch = main
 [submodule "C-Project"]
 	path = C-Project
-	url = https://github.com/AbsoluteZero001/C-Project.git
+	url = git@github.com:AbsoluteZero001/C-Project.git
+	branch = main
