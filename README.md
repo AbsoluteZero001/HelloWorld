@@ -8,6 +8,10 @@
 
 [EPS快递打印系统](https://github.com/AbsoluteZero001/Java-Project/tree/main/大一下/EPS)
 
+[电影院票务管理系统](https://github.com/AbsoluteZero001/C-Project/tree/main/Cinema%20online%20ticketing%20management%20system)
+
+
+
 
 
 
