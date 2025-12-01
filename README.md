@@ -10,7 +10,15 @@
 
 [电影院票务管理系统](https://github.com/AbsoluteZero001/C-Project/tree/main/Cinema%20online%20ticketing%20management%20system)
 
+[学生成绩管理系统](https://github.com/AbsoluteZero001/C-Project/tree/main/LinkedGradeSys)
+
 [基于数组的学生成绩管理系统](https://github.com/AbsoluteZero001/C-Project/tree/main/ArrayGradeSys)
+
+
+
+
+
+
 
 
 
