@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ 检出父仓库及所有子模块
+      # 1️⃣ 检出父仓库及子模块
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # 拉取子模块
+          submodules: recursive
           persist-credentials: true  # 保持推送权限
 
       # 2️⃣ 配置 Git 用户信息
@@ -23,11 +23,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      # 3️⃣ 更新所有子模块到远程最新 commit
-      - name: Update submodules
-        run: git submodule update --remote --merge
+      # 3️⃣ 强制更新所有子模块到远程最新 commit
+      - name: Force update submodules
+        run: |
+          git submodule foreach 'git fetch origin && git reset --hard origin/main'
 
-      # 4️⃣ 检查是否有变更并提交
+      # 4️⃣ 检查是否有变更并提交父仓库
       - name: Commit and push changes
         run: |
           git add .
