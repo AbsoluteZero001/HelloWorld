@@ -2,7 +2,7 @@ name: Auto Update Submodules
 
 on:
   schedule:
-    - cron: '0 * * * *'  # 每小时自动运行一次
+    - cron: '0 * * * *'  # 每小时运行一次
   workflow_dispatch:     # 支持手动触发
 
 jobs:
@@ -14,20 +14,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-          persist-credentials: true
+          submodules: recursive  # 拉取子模块
+          persist-credentials: true  # 保持推送权限
 
       # 2️⃣ 配置 Git 用户信息
-      - name: Set git user
+      - name: Set Git user
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       # 3️⃣ 更新所有子模块到远程最新 commit
       - name: Update submodules
-        run: |
-          git submodule foreach 'git fetch origin $toplevel'
-          git submodule update --remote --merge
+        run: git submodule update --remote --merge
 
       # 4️⃣ 检查是否有变更并提交
       - name: Commit and push changes
@@ -38,4 +36,3 @@ jobs:
             git push origin main
           else
             echo "No submodule updates"
-
