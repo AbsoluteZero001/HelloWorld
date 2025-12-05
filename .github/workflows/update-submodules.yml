@@ -10,12 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 0️⃣ 设置 SSH Key，用于访问父仓库和子模块
+      - name: 配置 SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
       # 1️⃣ 检出父仓库及所有子模块
       - name: 检出仓库
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          persist-credentials: false  # 这里改成 false，避免使用只读 GITHUB_TOKEN
+          persist-credentials: false  # 不使用只读 GITHUB_TOKEN
 
       # 2️⃣ 设置 Git 用户信息
       - name: 设置 Git 用户
@@ -30,13 +38,10 @@ jobs:
 
       # 4️⃣ 检查是否有变更并提交父仓库
       - name: 提交并推送父仓库
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git add .
           if ! git diff --cached --quiet; then
             git commit -m "自动更新子模块到最新 commit"
-            git push https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}.git main
+            git push git@github.com:${{ github.repository }}.git main
           else
             echo "子模块无更新，无需提交"
-          fi
