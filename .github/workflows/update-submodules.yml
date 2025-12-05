@@ -1,36 +1,41 @@
-name: Auto Update Submodules
+name: 自动更新子模块
 
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+    - cron: '0 * * * *'  # 每小时执行一次
+  workflow_dispatch:     # 支持手动触发
 
 jobs:
   update-submodules:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      # 1️⃣ 检出父仓库及子模块
+      - name: 检出仓库
         uses: actions/checkout@v4
         with:
           submodules: recursive
           persist-credentials: true
 
-      - name: Set Git user
+      # 2️⃣ 设置 Git 用户信息
+      - name: 设置 Git 用户
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Force update submodules
+      # 3️⃣ 强制更新所有子模块到远程 main 分支最新 commit
+      - name: 强制更新子模块
         run: |
           git submodule foreach 'git fetch origin && git reset --hard origin/main'
 
-      - name: Commit and push changes
+      # 4️⃣ 检查是否有变更并提交父仓库
+      - name: 提交并推送父仓库
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "Auto update submodules to latest"
-            git push origin main
+            git commit -m "自动更新子模块到最新 commit"
+            git push https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}.git main
           else
-            echo "No submodule updates"
-          fi
+            echo "子模块无更新，无需提交"
