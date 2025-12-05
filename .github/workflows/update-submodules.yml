@@ -1,0 +1,35 @@
+name: Auto Update Submodules
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: true
+
+      - name: Set Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Force update submodules
+        run: |
+          git submodule foreach 'git fetch origin && git reset --hard origin/main'
+
+      - name: Commit and push changes
+        run: |
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto update submodules to latest"
+            git push origin main
+          else
+            echo "No submodule updates"
